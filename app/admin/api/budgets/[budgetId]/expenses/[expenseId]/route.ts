@@ -8,14 +8,15 @@ export async function GET(
   await verifySession();
 
   const token = getToken();
+
   const url = `${process.env.API_URL}/budgets/${params.budgetId}/expenses/${params.expenseId}`;
+
   const req = await fetch(url, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
   const json = await req.json();
-  console.log(json);
 
   if (!req.ok) {
     return Response.json(json.error, { status: 403 });
