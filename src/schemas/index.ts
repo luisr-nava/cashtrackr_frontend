@@ -35,6 +35,36 @@ export const ForgotPasswordSchema = z.object({
     .email({ message: "Email no válido" }),
 });
 
+export const ResetPasswordSchema = z
+  .object({
+    password: z
+      .string()
+      .min(8, { message: "El Password debe ser de al menos 8 caracteres" }),
+    password_confirmation: z.string(),
+  })
+  .refine((data) => data.password === data.password_confirmation, {
+    message: "Los Passwords no son iguales",
+    path: ["password_confirmation"],
+  });
+
+export const DraftBudgetSchema = z.object({
+  name: z
+    .string()
+    .min(1, { message: "El Nombre del presupuesto es obligatorio" }),
+  amount: z.coerce
+    .number({ message: "Cantidad no válida" })
+    .min(1, { message: "Cantidad no válida" }),
+});
+
+export const PasswordValidationSchema = z
+  .string()
+  .min(1, { message: "Password no válido" });
+
+export const DraftExpenseSchema = z.object({
+  name: z.string().min(1, { message: "El Nombre del es obligatorio" }),
+  amount: z.coerce.number().min(1, { message: "Cantidad no válida" }),
+});
+
 export const SuccessSchema = z.string();
 
 export const ErrorResponseSchema = z.object({
@@ -47,16 +77,31 @@ export const UserSchema = z.object({
   email: z.string().email(),
 });
 
+export const ExpenseAPIResponseSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  amount: z.string(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  budgetId: z.number(),
+});
+
+export const BudgetAPIResponseSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  amount: z.string(),
+  userId: z.number(),
+  createdAt: z.string(),
+  updatedAt: z.string(),
+  expenses: z.array(ExpenseAPIResponseSchema),
+});
+
+export const BudgetsAPIResponseSchema = z.array(
+  BudgetAPIResponseSchema.omit({ expenses: true }),
+);
+
 export type User = z.infer<typeof UserSchema>;
 
-export const ResetPasswordSchema = z
-  .object({
-    password: z
-      .string()
-      .min(8, { message: "El Password debe ser de al menos 8 caracteres" }),
-    password_confirmation: z.string(),
-  })
-  .refine((data) => data.password === data.password_confirmation, {
-    message: "Los Passwords no son iguales",
-    path: ["password_confirmation"],
-  });
+export type Budget = z.infer<typeof BudgetAPIResponseSchema>;
+
+export type Expense = z.infer<typeof ExpenseAPIResponseSchema>; 

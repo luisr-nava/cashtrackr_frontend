@@ -4,6 +4,7 @@ import ValidateTokenForm from "@/components/auth/ValidateTokenForm";
 import React from "react";
 
 export default function NewPasswordPage() {
+  
   return (
     <>
       <h1 className="font-black text-6xl text-purple-950">

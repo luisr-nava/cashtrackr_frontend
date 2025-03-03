@@ -1,13 +1,13 @@
-//Data  Access Layer server-only  dado que userserver es para los server-action 
+//Data  Access Layer server-only  dado que userserver es para los server-action
 import "server-only";
 
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { UserSchema } from "../schemas";
 import { cache } from "react";
+import getToken from "./token";
 
 export const verifySession = cache(async () => {
-  const token = cookies().get("CASHTRACKR_TOKEN")?.value;
+  const token = getToken();
   if (!token) {
     redirect("/auth/login");
   }
@@ -32,4 +32,3 @@ export const verifySession = cache(async () => {
     isAuth: true,
   };
 });
-
