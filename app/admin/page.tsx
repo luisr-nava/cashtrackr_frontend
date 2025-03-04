@@ -1,7 +1,6 @@
 import getToken from "@/src/auth/token";
 import { BudgetsAPIResponseSchema } from "@/src/schemas";
 import { Metadata } from "next";
-import { cookies } from "next/headers";
 import Link from "next/link";
 import { formatCurrency, formatDate } from "../../src/util/index";
 import BudgetMenu from "@/components/budgets/BudgetMenu";

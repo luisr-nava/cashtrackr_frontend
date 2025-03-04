@@ -4,8 +4,6 @@ import { confirmAccount } from "@/actions/confirm-account-action";
 import { PinInput, PinInputField } from "@chakra-ui/pin-input";
 import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
-import ErrorMessage from "../ui/ErrorMessage";
-import SuccessMessage from "../ui/SuccessMessage";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
@@ -27,7 +25,7 @@ export default function ConfirmAccountForm() {
     if (isComplete) {
       dispatch();
     }
-  }, [isComplete]);
+  }, [isComplete, dispatch]);
 
   useEffect(() => {
     if (state.errors) {
@@ -42,7 +40,7 @@ export default function ConfirmAccountForm() {
         },
       });
     }
-  }, [state]);
+  }, [state, router]);
 
   const handleChange = (token: string) => {
     setIsComplete(false);

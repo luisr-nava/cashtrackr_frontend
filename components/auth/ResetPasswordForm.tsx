@@ -34,7 +34,7 @@ export default function ResetPasswordForm({ token }: ResetPasswordFormProps) {
         }
       });
     }
-  }, [state]);
+  }, [state, router]);
 
   return (
     <form className=" mt-14 space-y-5" noValidate action={dispatch}>

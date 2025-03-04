@@ -1,7 +1,7 @@
 "use client";
 
 import { authenticate } from "@/actions/authenticate-user-action";
-import { useActionState, useEffect } from "react";
+import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import { toast } from "react-toastify";
 
@@ -16,7 +16,7 @@ export default function LoginForm() {
       });
     }
   }, [state]);
-  
+
   return (
     <>
       <form className="mt-14 space-y-5" noValidate action={dispatch}>
@@ -52,4 +52,3 @@ export default function LoginForm() {
     </>
   );
 }
-

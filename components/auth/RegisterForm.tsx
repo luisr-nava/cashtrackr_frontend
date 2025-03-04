@@ -22,7 +22,7 @@ export default function RegisterForm() {
     <form className="mt-14 space-y-5" noValidate action={dispatch} ref={ref}>
       {state.success && <SuccessMessage>{state.success}</SuccessMessage>}
       {state.errors.map((error) => (
-        <ErrorMessage>{error}</ErrorMessage>
+        <ErrorMessage key={error}>{error}</ErrorMessage>
       ))}
       <div className="flex flex-col gap-2">
         <label className="font-bold text-2xl" htmlFor="email">
