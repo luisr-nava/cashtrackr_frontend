@@ -71,7 +71,7 @@ export default async function BudgetDetailsPage({
           </ul>
         </>
       ) : (
-        <p className="text-center py-20">no hay</p>
+        <p className="text-center py-20">No hay gastos aun</p>
       )}
     </>
   );

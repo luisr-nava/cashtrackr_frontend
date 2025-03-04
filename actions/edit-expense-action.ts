@@ -14,6 +14,7 @@ type BudgetAndExpenseId = {
   budgetId: Budget["id"];
   expenseId: Expense["id"];
 };
+
 type ActionStateType = {
   errors: string[];
   success: string;

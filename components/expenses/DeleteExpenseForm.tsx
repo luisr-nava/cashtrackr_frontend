@@ -1,5 +1,10 @@
 import { useParams, useSearchParams } from "next/navigation";
 import { DialogTitle } from "@headlessui/react";
+import { useFormState } from "react-dom";
+import { deleteExpense } from "@/actions/delete-exepnse-action";
+import { useEffect } from "react";
+import ErrorMessage from "../ui/ErrorMessage";
+import { toast } from "react-toastify";
 
 type DeleteExpenseForm = {
   closeModal: () => void;
@@ -10,11 +15,37 @@ export default function DeleteExpenseForm({ closeModal }: DeleteExpenseForm) {
   const searchParams = useSearchParams();
   const expenseId = searchParams.get("deleteExpenseId")!;
 
+  const deleteExpenseWithBudgetId = deleteExpense.bind(null, {
+    budgetId: +budgetId,
+    expenseId: +expenseId,
+  });
+
+  const [state, dispatch] = useFormState(deleteExpenseWithBudgetId, {
+    errors: [],
+    success: "",
+  });
+
+  useEffect(() => {
+    if (state.success) {
+      toast.success(state.success);
+      closeModal();
+    }
+  }, [state]);
+
+  useEffect(() => {
+    if (!Number.isInteger(+budgetId || !Number.isInteger(+expenseId))) {
+      closeModal();
+    }
+  }, []);
+
   return (
     <>
       <DialogTitle as="h3" className="font-black text-4xl text-purple-950 my-5">
         Eliminar Gasto
       </DialogTitle>
+      {state.errors.map((error) => (
+        <ErrorMessage key={error}>{error}</ErrorMessage>
+      ))}
       <p className="text-xl font-bold">
         Confirma para eliminar, {""}
         <span className="text-amber-500">el gasto</span>
@@ -30,6 +61,7 @@ export default function DeleteExpenseForm({ closeModal }: DeleteExpenseForm) {
         </button>
         <button
           type="button"
+          onClick={() => dispatch()}
           className="bg-red-500 w-full p-3 text-white uppercase font-bold hover:bg-red-600 cursor-pointer transition-colors">
           Eliminar
         </button>
@@ -37,3 +69,4 @@ export default function DeleteExpenseForm({ closeModal }: DeleteExpenseForm) {
     </>
   );
 }
+
