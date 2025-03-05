@@ -16,8 +16,6 @@ export default function EditExpenseForm({
   const [expense, setExpense] = useState<DraftExpense>();
   const { id: budgetId } = useParams();
 
-  console.log(budgetId);
-
   const searchParams = useSearchParams();
 
   const expenseId = searchParams.get("editExpenseId")!;

@@ -25,7 +25,10 @@ export default async function BudgetDetailsPage({
 }: {
   params: { id: string };
 }) {
+  
   const budget = await getBudget(params.id);
+  console.log(budget);
+  
 
   const totalSpent = budget.expenses.reduce(
     (total, expense) => +expense.amount + total,

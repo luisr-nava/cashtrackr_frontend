@@ -5,6 +5,7 @@ export async function GET(
   request: Request,
   { params }: { params: { budgetId: string; expenseId: string } },
 ) {
+  
   await verifySession();
 
   const token = await getToken();
