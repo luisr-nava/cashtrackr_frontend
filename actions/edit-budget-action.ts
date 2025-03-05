@@ -33,7 +33,7 @@ export async function EditBudget(
     };
   }
 
-  const token = getToken();
+  const token = await getToken();
 
   const url = `${process.env.API_URL}/budgets/${budgetId}`;
 
@@ -71,5 +71,6 @@ export async function EditBudget(
     success,
   };
 }
+
 
 

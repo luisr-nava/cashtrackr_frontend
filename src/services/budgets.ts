@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { BudgetAPIResponseSchema } from "../schemas";
 
 export const getBudget = cache(async (budgetId: string) => {
-  const token = getToken();
+  const token = await getToken();
 
   const url = `${process.env.API_URL}/budgets/${budgetId}`;
 
@@ -24,3 +24,4 @@ export const getBudget = cache(async (budgetId: string) => {
 
   return budget;
 });
+

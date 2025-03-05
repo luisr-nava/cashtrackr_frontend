@@ -7,9 +7,12 @@ export async function GET(
 ) {
   await verifySession();
 
-  const token = getToken();
+  const token = await getToken();
 
   const url = `${process.env.API_URL}/budgets/${params.budgetId}/expenses/${params.expenseId}`;
+
+  console.log(url);
+  
 
   const req = await fetch(url, {
     headers: {
@@ -24,4 +27,5 @@ export async function GET(
   
   return Response.json(json);
 }
+
 

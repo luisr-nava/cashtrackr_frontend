@@ -29,7 +29,7 @@ export async function updateUser(
     };
   }
 
-  const token = getToken();
+  const token = await getToken();
 
   const url = `${process.env.API_URL}/auth/user`;
 
@@ -66,4 +66,5 @@ export async function updateUser(
     success,
   };
 }
+
 

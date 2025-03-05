@@ -30,7 +30,7 @@ export async function deleteBudget(
     };
   }
 
-  const token = getToken();
+  const token = await getToken();
 
   const checkPasswordUrl = `${process.env.API_URL}/auth/check-password`;
 
@@ -83,4 +83,5 @@ export async function deleteBudget(
     success,
   };
 }
+
 

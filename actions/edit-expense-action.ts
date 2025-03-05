@@ -37,7 +37,7 @@ export default async function editExpense(
     };
   }
 
-  const token = getToken();
+  const token = await getToken();
 
   const url = `${process.env.API_URL}/budgets/${budgetId}/expenses/${expenseId}`;
 
@@ -72,4 +72,5 @@ export default async function editExpense(
     success,
   };
 }
+
 

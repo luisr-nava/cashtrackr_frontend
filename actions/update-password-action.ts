@@ -29,7 +29,7 @@ export async function updatePassword(
     };
   }
 
-  const token = getToken();
+  const token = await getToken();
 
   const url = `${process.env.API_URL}/auth/update-password`;
 
@@ -63,4 +63,5 @@ export async function updatePassword(
     success,
   };
 }
+
 
