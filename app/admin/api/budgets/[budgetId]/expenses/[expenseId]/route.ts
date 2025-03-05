@@ -11,7 +11,6 @@ export async function GET(
 
   const url = `${process.env.API_URL}/budgets/${params.budgetId}/expenses/${params.expenseId}`;
 
-  console.log(url);
   
 
   const req = await fetch(url, {

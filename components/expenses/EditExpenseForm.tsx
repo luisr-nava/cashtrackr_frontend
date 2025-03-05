@@ -31,7 +31,6 @@ export default function EditExpenseForm({
 
   useEffect(() => {
     const url = `${process.env.NEXT_PUBLIC_URL}/admin/api/budgets/${budgetId}/expenses/${expenseId}`;
-    console.log({url});
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
