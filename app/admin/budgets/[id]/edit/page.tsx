@@ -23,6 +23,7 @@ export default async function EditBudgetPage({
 }) {
   const { id } = params;
   
+
   const budget = await getBudget(id);
   return (
     <>

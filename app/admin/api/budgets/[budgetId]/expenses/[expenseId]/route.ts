@@ -10,6 +10,8 @@ export async function GET(
   const token = await getToken();
 
   const url = `${process.env.API_URL}/budgets/${params.budgetId}/expenses/${params.expenseId}`;
+  console.log({url});
+  
 
   
 
