@@ -21,9 +21,9 @@ async function getUserBudgets() {
       Authorization: `Bearer ${token}`,
     },
     // CRMs
-    // next: {
-    //   tags: ["all-budgets"],
-    // },
+    next: {
+      tags: ["all-budgets"],
+    },
   });
   const json = await req.json();
 
