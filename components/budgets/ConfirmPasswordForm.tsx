@@ -53,7 +53,7 @@ export default function ConfirmPasswordForm() {
       <form className=" mt-14 space-y-5" noValidate action={dispatch}>
         <div className="flex flex-col gap-5">
           <label className="font-bold text-2xl" htmlFor="password">
-            Ingresa tu Password para eliminar
+            Ingresa tu Password para Eliminar
           </label>
           <input
             id="password"
