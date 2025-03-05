@@ -20,7 +20,7 @@ export async function authenticate(
 
   if (!auth.success) {
     return {
-      errors: auth.error.issues.map((issue) => issue.message),
+      errors: auth.error.errors.map((issue) => issue.message),
     };
   }
 
